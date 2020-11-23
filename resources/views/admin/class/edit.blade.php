@@ -38,7 +38,7 @@
                             <select class="form-control @error('standard') is-invalid @enderror" id="from" name="standard">
                                 <option value="">-Select Standard-</option>
                                 @foreach($standard as $s)
-                                <option value="{{ $s->id }}" {{ ($class->standard == $s->standard) ? 'selected=selected' : '' }}>{{ $s->standard }}</option>
+                                <option value="{{ $s->id }}" {{ ($class->standard == $s->id) ? 'selected=selected' : '' }}>{{ $s->standard }}</option>
                                 @endforeach
                             </select>
                             @error('standard')
@@ -54,7 +54,7 @@
                             <select class="form-control @error('section') is-invalid @enderror" id="to" name="section">
                                 <option value="">-Select Section-</option>
                                 @foreach($section as $sec)
-                                <option value="{{ $sec->id }}" {{ ($class->section == $sec->section) ? 'selected=selected' : '' }}>{{ $sec->section }}</option>
+                                <option value="{{ $sec->id }}" {{ ($class->section == $sec->id) ? 'selected=selected' : '' }}>{{ $sec->section }}</option>
                                 @endforeach
                             </select>
                             @error('section')
