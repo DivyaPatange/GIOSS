@@ -31,7 +31,7 @@
             <li class="nav-item dropdown hidden-caret">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                     <div class="avatar-sm">
-                        <p class="text-white">Admin</p>
+                        <p class="text-white">{{ Auth::guard('admin')->user()->name }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated fadeIn">

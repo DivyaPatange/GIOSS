@@ -79,7 +79,7 @@
             
             </div>
             <div class="card-action">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">Update</button>
             </div>
             </form>
         </div>

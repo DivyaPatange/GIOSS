@@ -1,9 +1,9 @@
 @extends('admin.adminLayout.mainlayout')
-@section('title', 'Academic Year')
+@section('title', 'Class')
 @section('customcss')
 <script src="https://use.fontawesome.com/73265066dc.js"></script>
 @endsection
-@section('page_title', 'Academic Year')
+@section('page_title', 'Class')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -25,43 +25,22 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <div class="card-title">Add Academic Year</div>
+                <div class="card-title">Add Class</div>
             </div>
-            <form method="POST" action="{{ route('admin.academicYear.store') }}">
+            <form method="POST" action="{{ route('admin.class.store') }}">
             @csrf
             <div class="card-body">           
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="from">From Academic Year</label>
-                            <input type="month" class="form-control @error('from_academic_year') is-invalid @enderror" id="from" name="from_academic_year" value="{{ old('from_academic_year') }}">
-                            @error('from_academic_year')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="to">To Academic Year</label>
-                            <input type="month" class="form-control @error('to_academic_year') is-invalid @enderror" id="to" name="to_academic_year" value="{{ old('to_academic_year') }}">
-                            @error('to_academic_year')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select class="form-control @error('status') is-invalid @enderror" name="status">
-                                <option value="">-Select Status-</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                            <label for="from">Standard</label>
+                            <select class="form-control @error('standard') is-invalid @enderror" id="from" name="standard">
+                                <option value="">-Select Standard-</option>
+                                @foreach($standard as $s)
+                                <option value="{{ $s->id }}">{{ $s->standard }}</option>
+                                @endforeach
                             </select>
-                            @error('status')
+                            @error('standard')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -70,8 +49,18 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Description</label>
-                            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="description" value="{{ old('description') }}">
+                            <label for="to">Section</label>
+                            <select class="form-control @error('section') is-invalid @enderror" id="to" name="section">
+                                <option value="">-Select Section-</option>
+                                @foreach($section as $sec)
+                                <option value="{{ $sec->id }}">{{ $sec->section }}</option>
+                                @endforeach
+                            </select>
+                            @error('section')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -86,7 +75,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Academic Year List</h4>
+                <h4 class="card-title">Class List</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -94,38 +83,34 @@
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
-                                <th>From Academic Year</th>
-                                <th>To Academic Year</th>
-                                <th>Status</th>
-                                <th>Description</th>
+                                <th>Class </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>Sr. No.</th>
-                                <th>From Academic Year</th>
-                                <th>To Academic Year</th>
-                                <th>Status</th>
-                                <th>Description</th>
+                                <th>Class</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($academicYears as $key=>$a)
+                            @foreach($classes as $key=>$c)
+                            <?php
+                                $standard = DB::table('standards')->where('id', $c->standard)->first();
+                                $section = DB::table('sections')->where('id', $c->section)->first();
+                                // dd($section);
+                            ?>
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td>{{ $a->from_academic_year }}</td>
-                                <td>{{ $a->to_academic_year }}</td>
-                                <td>@if($a->status == 1) Active @else Inactive @endif</td>
-                                <td>{{ $a->description }}</td>
-                                <td><a href="{{ route('admin.academicYear.edit', $a->id) }}"><button class="btn btn-icon btn-round btn-secondary">
+                                <td>@if(isset($standard) && !empty($standard)){{ $standard->standard }} @endif @if(isset($section) && !empty($section)){{ $section->section }} @endif</td>
+                                <td><a href="{{ route('admin.class.edit', $c->id) }}"><button class="btn btn-icon btn-round btn-secondary">
 										<i class="fa fa-pencil"></i>
 									</button></a>
                                     <a href="javascript:void(0)" onclick="$(this).parent().find('form').submit()"><button class="btn btn-icon btn-round btn-danger">
 											<i class="fa fa-trash"></i>
 										</button></a>
-                                    <form action="{{ route('admin.academicYear.destroy', $a->id) }}" method="post">
+                                    <form action="{{ route('admin.class.destroy', $c->id) }}" method="post">
                                         @method('DELETE')
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>

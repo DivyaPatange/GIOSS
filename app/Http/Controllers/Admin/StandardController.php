@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Standard;
 
-class SchoolProfile extends Controller
+class StandardController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +19,8 @@ class SchoolProfile extends Controller
      */
     public function index()
     {
-        //
+        $standard = Standard::all();
+        return view('admin.standard.index', compact('standard'));
     }
 
     /**
@@ -39,7 +41,13 @@ class SchoolProfile extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'standard' => 'required',
+        ]);
+        $standard = new Standard();
+        $standard->standard = $request->standard;
+        $standard->save();
+        return redirect('/admin/standard')->with('success', 'Standard Added Successfully');
     }
 
     /**
@@ -61,7 +69,8 @@ class SchoolProfile extends Controller
      */
     public function edit($id)
     {
-        //
+        $standard = Standard::findorfail($id);
+        return view('admin.standard.edit', compact('standard'));
     }
 
     /**
@@ -73,7 +82,13 @@ class SchoolProfile extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'standard' => 'required',
+        ]);
+        $standard = Standard::findorfail($id);
+        $standard->standard = $request->standard;
+        $standard->update($request->all());
+        return redirect('/admin/standard')->with('success', 'Standard Updated Successfully');
     }
 
     /**
@@ -84,6 +99,9 @@ class SchoolProfile extends Controller
      */
     public function destroy($id)
     {
-        //
+        $standard = Standard::findorfail($id);
+        $standard->delete();
+        return redirect('/admin/standard')->with('success', 'Standard Deleted Successfully');
+        
     }
 }

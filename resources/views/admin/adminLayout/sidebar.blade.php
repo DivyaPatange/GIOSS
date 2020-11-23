@@ -44,12 +44,6 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                    <h4 class="text-section">Components</h4>
-                </li>
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
@@ -74,17 +68,26 @@
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#forms">
                         <i class="fas fa-pen-square"></i>
-                        <p>Forms</p>
+                        <p>Class</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="forms">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="forms/forms.html">
-                                    <span class="sub-item">Basic Form</span>
+                                <a href="{{ route('admin.standard.index') }}">
+                                    <span class="sub-item">Standard</span>
                                 </a>
                             </li>
-                            
+                            <li>
+                                <a href="{{ route('admin.section.index') }}">
+                                    <span class="sub-item">Section</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.class.index') }}">
+                                    <span class="sub-item">Class</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

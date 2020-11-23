@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Section;
 
-class SchoolProfile extends Controller
+class SectionController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +19,8 @@ class SchoolProfile extends Controller
      */
     public function index()
     {
-        //
+        $section = Section::all();
+        return view('admin.section.index', compact('section'));
     }
 
     /**
@@ -39,7 +41,14 @@ class SchoolProfile extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'section' => 'required',
+        ]);
+
+        $section = new Section();
+        $section->section = $request->section;
+        $section->save();
+        return redirect('/admin/section')->with('success', 'Section Added Successfully');
     }
 
     /**
@@ -61,7 +70,8 @@ class SchoolProfile extends Controller
      */
     public function edit($id)
     {
-        //
+        $section = Section::findorfail($id);
+        return view('admin.section.edit', compact('section'));
     }
 
     /**
@@ -73,7 +83,14 @@ class SchoolProfile extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'section' => 'required',
+        ]);
+
+        $section = Section::findorfail($id);
+        $section->section = $request->section;
+        $section->update($request->all());
+        return redirect('/admin/section')->with('success', 'Section Updated Successfully!');
     }
 
     /**
@@ -84,6 +101,8 @@ class SchoolProfile extends Controller
      */
     public function destroy($id)
     {
-        //
+        $section = Section::findorfail($id);
+        $section->delete();
+        return redirect('/admin/section')->with('success', 'Section Deleted Successfully!');
     }
 }
