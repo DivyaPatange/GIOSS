@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AcademicController;
 use App\Http\Controllers\Admin\StandardController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ClassController;
+use App\Http\Controllers\Admin\SchoolProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('/standard', StandardController::class);
     Route::resource('/section', SectionController::class);
     Route::resource('/class', ClassController::class);
+    Route::resource('/school-profile',SchoolProfileController::class);
 });
+

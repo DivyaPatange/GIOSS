@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SchoolProfile extends Controller
+class SchoolProfileController extends Controller
 {
     public function __construct()
     {
@@ -28,7 +28,7 @@ class SchoolProfile extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.school-profile.create');
     }
 
     /**
