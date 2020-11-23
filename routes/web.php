@@ -36,6 +36,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('/standard', StandardController::class);
     Route::resource('/section', SectionController::class);
     Route::resource('/class', ClassController::class);
-    Route::resource('/school-profile',SchoolProfileController::class);
+    Route::resource('/school-profile', SchoolProfileController::class);
+    Route::resource('/student-profile', StudentProfileController::class);
 });
 

@@ -47,6 +47,13 @@ class CreateStudentProfilesTable extends Migration
             $table->string('previous_class');
             $table->string('medium_of_instruction');
             $table->string('extra_curricular_activity');
+            $table->string('health_problem');
+            $table->string('school_recognised');
+            $table->date('date_of_leaving');
+            $table->string('transfer_certificate');
+            $table->string('bonafide_certificate');
+            $table->string('admission_fees_discount');
+            $table->string('term_fees_discount');
             $table->timestamps();
         });
     }
