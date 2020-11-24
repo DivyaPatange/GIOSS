@@ -58,7 +58,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="{{ route('admin.school-profile.index') }}">
                                     <span class="sub-item">School Profile List</span>
                                 </a>
                             </li>
