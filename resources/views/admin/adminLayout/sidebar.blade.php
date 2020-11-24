@@ -79,7 +79,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="tables/datatables.html">
+                                <a href="{{ route('admin.student-profile.index') }}">
                                     <span class="sub-item">Admission List</span>
                                 </a>
                             </li>

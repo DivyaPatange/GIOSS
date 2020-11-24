@@ -103,6 +103,9 @@
                             <label for="class_teacher_name">Class Teacher Name</label>
                             <select class="form-control @error('class_teacher_name') is-invalid @enderror" id="class_teacher_name" name="class_teacher_name">
                                 <option value="">-Select Class Teacher-</option>
+                                @foreach($teachers as $t)
+                                <option value="{{ $t->id }}">{{ $t->name }}</option>
+                                @endforeach
                             </select>
                             @error('class_teacher_name')
                                 <span class="invalid-feedback" role="alert">
