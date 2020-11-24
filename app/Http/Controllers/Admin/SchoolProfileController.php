@@ -62,8 +62,8 @@ class SchoolProfileController extends Controller
         {
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('schoolLogo'), $image_name);
+            $schoolProfile->school_logo =$image_name;
         }
-        $schoolProfile->school_logo =$image_name;
         $schoolProfile->school_address = $request->school_address;
         $schoolProfile->school_city = $request->school_city;
         $schoolProfile->school_taluka = $request->school_taluka;
@@ -83,6 +83,7 @@ class SchoolProfileController extends Controller
         $schoolProfile->gr_no = $request->gr_no;
         $schoolProfile->medium = $request->medium;
         $schoolProfile->board = $request->board;
+        $schoolProfile->save();
         return redirect('/admin/school-profile')->with('success', 'School Profile Added Successfully');
     }
 
@@ -105,7 +106,8 @@ class SchoolProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $schoolProfile = SchoolProfile::findorfail($id);
+        return view('admin.school-profile.edit', compact('schoolProfile'));
     }
 
     /**
@@ -128,6 +130,11 @@ class SchoolProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $schoolProfile = SchoolProfile::findorfail($id);
+        if($schoolProfile->school_logo){
+            unlink(public_path('schoolLogo/'.$schoolProfile->school_logo));
+        }
+        $schoolProfile->delete();
+        return redirect('/admin/school-profile')->with('success', 'School Profile Deleted Successfully!');
     }
 }
