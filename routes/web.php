@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\SchoolProfileController;
 use App\Http\Controllers\Admin\StudentProfileController;
 use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\UserAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('/school-profile', SchoolProfileController::class);
     Route::resource('/student-profile', StudentProfileController::class);
     Route::resource('/teacher', TeacherController::class);
+    Route::resource('/userAccount',UserAccountController::class);
 });
 

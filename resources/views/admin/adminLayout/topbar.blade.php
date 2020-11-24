@@ -8,7 +8,7 @@
                 <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
                     <li>
                         <div class="notif-center">
-                            <a href="#">
+                            <a href="{{ route('admin.userAccount.create') }}">
                                 <div class="notif-icon notif-primary"> <i class="fa fa-user-plus"></i> </div>
                                 <div class="notif-content">
                                     <span class="block">
