@@ -53,7 +53,7 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="{{route('admin.school-profile.create')}}">
+                                <a href="{{ route('admin.school-profile.create') }}">
                                     <span class="sub-item">New School Profile</span>
                                 </a>
                             </li>
@@ -74,13 +74,34 @@
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="tables/tables.html">
+                                <a href="{{ route('admin.student-profile.create') }}">
                                     <span class="sub-item">New Admission</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="tables/datatables.html">
                                     <span class="sub-item">Admission List</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#maps">
+                        <i class="far fa-chart-bar"></i>
+                        <p>Teacher</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="maps">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ route('admin.teacher.create') }}">
+                                    <span class="sub-item">Add Teacher</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.teacher.index') }}">
+                                    <span class="sub-item">Teacher List</span>
                                 </a>
                             </li>
                         </ul>
@@ -107,32 +128,6 @@
                             <li>
                                 <a href="{{ route('admin.class.index') }}">
                                     <span class="sub-item">Class</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a data-toggle="collapse" href="#maps">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Maps</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="maps">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="maps/googlemaps.html">
-                                    <span class="sub-item">Google Maps</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="maps/fullscreenmaps.html">
-                                    <span class="sub-item">Full Screen Maps</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="maps/jqvmap.html">
-                                    <span class="sub-item">JQVMap</span>
                                 </a>
                             </li>
                         </ul>

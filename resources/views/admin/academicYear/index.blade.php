@@ -71,7 +71,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Description</label>
-                            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="description" value="{{ old('description') }}">
+                            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}">
                         </div>
                     </div>
                 </div>

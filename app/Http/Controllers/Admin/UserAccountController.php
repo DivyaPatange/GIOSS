@@ -4,12 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin\AcademicYear;
-use App\Models\Admin\SchoolProfile;
-use App\Models\Admin\StudentProfile;
-use App\Models\Admin\Classes;
 
-class StudentProfileController extends Controller
+class UserAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,10 +24,7 @@ class StudentProfileController extends Controller
      */
     public function create()
     {
-        $academicYear = AcademicYear::all();
-        $schoolProfile = SchoolProfile::all();
-        $class = Classes::all();
-        return view('admin.student-profile.create', compact('academicYear', 'schoolProfile', 'class'));
+        //
     }
 
     /**

@@ -21,7 +21,7 @@
 		@endif
     </div>
 </div>
-<form method="POST" action="{{ route('admin.academicYear.store') }}">
+<form method="POST" action="{{ route('admin.school-profile.store') }}">
 @csrf
     <div class="row">
         <div class="col-md-12">
@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="from">Society Name</label>
+                                <label for="society_name">Society Name</label>
                                 <input type="text" class="form-control @error('society_name') is-invalid @enderror" id="society_name" name="society_name" value="{{ old('society_name') }}">
                                 @error('society_name')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">Society Reg No</label>
+                                <label for="society_reg_no">Society Reg No</label>
                                 <input type="text" class="form-control @error('society_reg_no') is-invalid @enderror" id="society_reg_no" name="society_reg_no" value="{{ old('society_reg_no') }}">
                                 @error('society_reg_no')
                                     <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">society_address</label>
+                                <label for="society_address">Society Address</label>
                                 <input type="text" class="form-control @error('society_address') is-invalid @enderror" id="society_address" name="society_address" value="{{ old('society_address') }}">
                                 @error('society_address')
                                     <span class="invalid-feedback" role="alert">
@@ -68,8 +68,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">Society City</label>
-                                <input type="text" class="form-control @error('society_city') is-invalid @enderror" id="society_city" name="society_address" value="{{ old('society_city') }}">
+                                <label for="society_city">Society City</label>
+                                <input type="text" class="form-control @error('society_city') is-invalid @enderror" id="society_city" name="society_city" value="{{ old('society_city') }}">
                                 @error('society_city')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -103,7 +103,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">Society State</label>
+                                <label for="society_state">Society State</label>
                                 <input type="text" class="form-control @error('society_state') is-invalid @enderror" id="society_state" name="society_state" value="{{ old('society_state') }}">
                                 @error('society_state')
                                     <span class="invalid-feedback" role="alert">
@@ -149,7 +149,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="from">School name</label>
+                                <label for="school_name">School name</label>
                                 <input type="text" class="form-control @error('school_name') is-invalid @enderror" id="school_name" name="school_name" value="{{ old('school_name') }}">
                                 @error('school_name')
                                     <span class="invalid-feedback" role="alert">
@@ -160,7 +160,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">School Logo</label>
+                                <label for="school_logo">School Logo</label>
                                 <input type="file" class="form-control @error('school_logo') is-invalid @enderror" id="school_logo" name="school_logo" value="{{ old('school_logo') }}">
                                 @error('school_logo')
                                     <span class="invalid-feedback" role="alert">
@@ -171,7 +171,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">School Address</label>
+                                <label for="school_address">School Address</label>
                                 <input type="text" class="form-control @error('school_address') is-invalid @enderror" id="school_address" name="school_address" value="{{ old('school_address') }}">
                                 @error('school_address')
                                     <span class="invalid-feedback" role="alert">
@@ -184,7 +184,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">School City</label>
+                                <label for="school_city">School City</label>
                                 <input type="text" class="form-control @error('school_city') is-invalid @enderror" id="school_city" name="school_city" value="{{ old('school_city') }}">
                                 @error('school_city')
                                     <span class="invalid-feedback" role="alert">
@@ -220,19 +220,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="to">School Type</label>
-                                    <select name="school_type" id="school_type" class="form-control">
-                                        <option value="school_type">-SEELECT SCHOOL TYPE-</option>
-                                        <option value="convent">CONVENT</option>
-                                        <option value="high school">HIGH SCHOOL</option>
-                                        <option value="pre-primary">PRE-PRIMARY</option>
-                                        <option value="prathmic">PRATHMIC</option>
-                                        <option value="marathi">MARATHI</option>
-                                    </select>
-                                    @error('school_type')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <select name="school_type" id="school_type" class="form-control @error('school_type') is-invalid @enderror">
+                                    <option value="">-SEELECT SCHOOL TYPE-</option>
+                                    <option value="convent">CONVENT</option>
+                                    <option value="high-school">HIGH SCHOOL</option>
+                                    <option value="pre-primary">PRE-PRIMARY</option>
+                                    <option value="prathmic">PRATHMIC</option>
+                                    <option value="marathi">MARATHI</option>
+                                </select>
+                                @error('school_type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -283,8 +283,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="from">Contact Number</label>
-                                <input type="text" class="form-control @error('contact_no') is-invalid @enderror" id="contact_no" name="contact_no" value="{{ old('contact_no') }}">
+                                <label for="contact_no">Contact Number</label>
+                                <input type="number" class="form-control @error('contact_no') is-invalid @enderror" id="contact_no" name="contact_no" value="{{ old('contact_no') }}">
                                 @error('contact_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -294,8 +294,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">Email</label>
-                                <input type="file" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -305,7 +305,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="to">Website</label>
+                                <label for="website">Website</label>
                                 <input type="text" class="form-control @error('website') is-invalid @enderror" id="website" name="website" value="{{ old('website') }}">
                                 @error('website')
                                     <span class="invalid-feedback" role="alert">
@@ -329,8 +329,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="from">Serial Number</label>
-                                <input type="text" class="form-control @error('serial_no') is-invalid @enderror" id="serial_no" name="serial_no" value="{{ old('serial_no') }}">
+                                <label for="serial_no">Serial Number</label>
+                                <input type="number" class="form-control @error('serial_no') is-invalid @enderror" id="serial_no" name="serial_no" value="{{ old('serial_no') }}">
                                 @error('serial_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -340,8 +340,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="to">General Reg No</label>
-                                <input type="text" class="form-control @error('general_reg_no') is-invalid @enderror" id="general_reg_no" name="general_reg_no" value="{{ old('general_reg_no') }}">
+                                <label for="general_reg_no">General Reg. No</label>
+                                <input type="number" class="form-control @error('general_reg_no') is-invalid @enderror" id="general_reg_no" name="general_reg_no" value="{{ old('general_reg_no') }}">
                                 @error('general_reg_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -351,8 +351,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="to">School Recog No</label>
-                                <input type="text" class="form-control @error('school_recog_no') is-invalid @enderror" id="school_recog_no" name="school_recog_no" value="{{ old('school_recog_no') }}">
+                                <label for="school_recog_no">School Recog. No</label>
+                                <input type="number" class="form-control @error('school_recog_no') is-invalid @enderror" id="school_recog_no" name="school_recog_no" value="{{ old('school_recog_no') }}">
                                 @error('school_recog_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -362,8 +362,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="to">Udise No</label>
-                                <input type="text" class="form-control @error('udise_no') is-invalid @enderror" id="udise_no" name="udise_no" value="{{ old('udise_no') }}">
+                                <label for="udise_no">UDISE No</label>
+                                <input type="number" class="form-control @error('udise_no') is-invalid @enderror" id="udise_no" name="udise_no" value="{{ old('udise_no') }}">
                                 @error('udise_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -375,8 +375,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="from">Affiliation no</label>
-                                <input type="text" class="form-control @error('affiliation_no') is-invalid @enderror" id="affiliation_no" name="affiliation_no" value="{{ old('affiliation_no') }}">
+                                <label for="affiliation_no">Affiliation no</label>
+                                <input type="number" class="form-control @error('affiliation_no') is-invalid @enderror" id="affiliation_no" name="affiliation_no" value="{{ old('affiliation_no') }}">
                                 @error('affiliation_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -386,8 +386,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="to">GR No</label>
-                                <input type="text" class="form-control @error('gr_no') is-invalid @enderror" id="gr_no" name="gr_no" value="{{ old('gr_no') }}">
+                                <label for="gr_no">GR No</label>
+                                <input type="number" class="form-control @error('gr_no') is-invalid @enderror" id="gr_no" name="gr_no" value="{{ old('gr_no') }}">
                                 @error('gr_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -397,7 +397,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="to">Medium</label>
+                                <label for="medium">Medium</label>
                                 <input type="text" class="form-control @error('medium') is-invalid @enderror" id="medium" name="medium" value="{{ old('medium') }}">
                                 @error('medium')
                                     <span class="invalid-feedback" role="alert">
@@ -408,7 +408,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="to">Board</label>
+                                <label for="board">Board</label>
                                 <input type="text" class="form-control @error('board') is-invalid @enderror" id="board" name="board" value="{{ old('board') }}">
                                 @error('board')
                                     <span class="invalid-feedback" role="alert">
