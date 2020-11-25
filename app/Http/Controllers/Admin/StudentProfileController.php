@@ -34,6 +34,7 @@ class StudentProfileController extends Controller
     {
         $academicYear = AcademicYear::all();
         $schoolProfile = SchoolProfile::all();
+        $teachers = Teacher::all();
         $class = Classes::all();
         $teacher = Teacher::all();
         return view('admin.student-profile.create', compact('academicYear', 'schoolProfile', 'class', 'teacher'));
