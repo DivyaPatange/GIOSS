@@ -41,6 +41,9 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('/class', ClassController::class);
     Route::resource('/school-profile', SchoolProfileController::class);
     Route::resource('/student-profile', StudentProfileController::class);
+    Route::get('/sibling/{id}', [StudentProfileController::class, 'siblingForm'])->name('siblingForm');
+    Route::delete('/sibling/delete/{id}', [StudentProfileController::class, 'siblingDestroy'])->name('sibling.destroy');
+    Route::post('/sibling/submit', [StudentProfileController::class, 'siblingSubmit'])->name('sibling.submit');
     Route::resource('/teacher', TeacherController::class);
     Route::resource('/userAccount',UserAccountController::class);
 });

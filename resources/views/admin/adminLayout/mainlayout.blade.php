@@ -5,7 +5,7 @@
 	<title>GIOSS | @yield('title')</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="{{ asset('logo.png') }}" type="image/x-icon"/>
-
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	@include('admin.adminLayout.styles')
     @yield('customcss')
 </head>

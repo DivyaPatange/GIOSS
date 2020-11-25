@@ -54,8 +54,8 @@ class TeacherController extends Controller
         {
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('teacherImg'), $image_name);
+            $teacher->photo =$image_name;
         }
-        $teacher->photo =$image_name;
         $teacher->save();
         return redirect('/admin/teacher')->with('success', 'Teacher Added Successfully!');
     }

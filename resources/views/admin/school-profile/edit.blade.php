@@ -65,8 +65,6 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="society_city">Society City</label>
@@ -100,8 +98,6 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="society_state">Society State</label>
@@ -173,14 +169,14 @@
                         @if($schoolProfile->school_logo)
                             <input type="hidden" class="form-control-file" name="hidden_image" value="{{ $schoolProfile->school_logo }}">
                         @endif
+                        @if($schoolProfile->school_logo)
                         <div class="col-md-4">
                             <label for=""></label>
                             <div class="form-group">
                                 <a href="{{  URL::asset('schoolLogo/' . $schoolProfile->school_logo) }}" target="_blank">Click to View</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                        @endif
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="school_address">School Address</label>
@@ -203,8 +199,6 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>School Taluka</label>
@@ -245,8 +239,6 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>School State</label>
@@ -432,7 +424,7 @@
                     </div>
                 </div>
                 <div class="card-action">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success">Update</button>
                 </div>    
             </div>
         </div>

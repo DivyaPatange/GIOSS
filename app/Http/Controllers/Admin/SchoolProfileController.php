@@ -44,6 +44,7 @@ class SchoolProfileController extends Controller
         $request->validate([
             'society_name' => 'required',
             'school_name' => 'required',
+            'school_type' => 'required',
         ]);
         $schoolProfile = new SchoolProfile();
         $schoolProfile->society_name = $request->society_name;
@@ -119,7 +120,55 @@ class SchoolProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'society_name' => 'required',
+            'school_name' => 'required',
+            'school_type' => 'required',
+        ]);
+        $schoolProfile = SchoolProfile::findorfail($id);
+        $image_name = $request->hidden_image;
+        $image = $request->file('school_logo');
+        if($image != '')
+        {
+            
+        $image_name = rand() . '.' . $image->getClientOriginalExtension();
+        // $image->storeAs('public/tempcourseimg',$image_name);
+        $image->move(public_path('schoolLogo'), $image_name);
+        }
+        $input_data = array (
+            'society_name' => $request->society_name,
+            'society_reg_no' => $request->society_reg_no,
+            'society_address' => $request->society_address,
+            'society_city' => $request->society_city,
+            'society_taluka' => $request->society_taluka,
+            'society_district' => $request->society_district,
+            'society_state' => $request->society_state,
+            'society_country' => $request->society_country,
+            'society_zip_code' => $request->society_zip_code,
+            'school_name' => $request->school_name,
+            'school_logo' => $image_name,
+            'school_address' => $request->school_address,
+            'school_city' => $request->school_city,
+            'school_taluka' => $request->school_taluka,
+            'school_district' => $request->school_district,
+            'school_state' => $request->school_state,
+            'school_country' => $request->school_country,
+            'school_zip_code' => $request->school_zip_code,
+            'school_type' => $request->school_type,
+            'contact_no' => $request->contact_no,
+            'email' => $request->email,
+            'website' => $request->website,
+            'serial_no' => $request->serial_no,
+            'general_reg_no' => $request->general_reg_no,
+            'school_recog_no' => $request->school_recog_no,
+            'udise_no' => $request->udise_no,
+            'affiliation_no' => $request->affiliation_no,
+            'gr_no' => $request->gr_no,
+            'medium' => $request->medium,
+            'board' => $request->board,
+        );
+        $schoolProfile = SchoolProfile::whereId($id)->update($input_data);
+        return redirect('/admin/school-profile')->with('success', 'School Profile Updated Successfully');
     }
 
     /**
