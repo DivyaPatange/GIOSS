@@ -222,11 +222,10 @@
                                 <label for="to">School Type</label>
                                 <select name="school_type" id="school_type" class="form-control @error('school_type') is-invalid @enderror">
                                     <option value="">-SEELECT SCHOOL TYPE-</option>
-                                    <option value="convent">CONVENT</option>
-                                    <option value="high-school">HIGH SCHOOL</option>
-                                    <option value="pre-primary">PRE-PRIMARY</option>
-                                    <option value="prathmic">PRATHMIC</option>
-                                    <option value="marathi">MARATHI</option>
+                                    <option value="Convent">CONVENT</option>
+                                    <option value="High School">HIGH SCHOOL</option>
+                                    <option value="Primary School">PRIMARY SCHOOL</option>
+                                    <option value="Marathi School">MARATHI SCHOOL</option>
                                 </select>
                                 @error('school_type')
                                     <span class="invalid-feedback" role="alert">

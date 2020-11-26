@@ -226,11 +226,10 @@
                                 <label for="to">School Type</label>
                                 <select name="school_type" id="school_type" class="form-control @error('school_type') is-invalid @enderror">
                                     <option value="">-SEELECT SCHOOL TYPE-</option>
-                                    <option value="convent" {{ ($schoolProfile->school_type == "convent") ? 'selected=selected' : '' }}>CONVENT</option>
-                                    <option value="high-school" {{ ($schoolProfile->school_type == "high-school") ? 'selected=selected' : '' }}>HIGH SCHOOL</option>
-                                    <option value="pre-primary" {{ ($schoolProfile->school_type == "pre-primary") ? 'selected=selected' : '' }}>PRE-PRIMARY</option>
-                                    <option value="prathmic" {{ ($schoolProfile->school_type == "prathmic") ? 'selected=selected' : '' }}>PRATHMIC</option>
-                                    <option value="marathi" {{ ($schoolProfile->school_type == "marathi") ? 'selected=selected' : '' }}>MARATHI</option>
+                                    <option value="Convent" {{ ($schoolProfile->school_type == "Convent") ? 'selected=selected' : '' }}>CONVENT</option>
+                                    <option value="High School" {{ ($schoolProfile->school_type == "High School") ? 'selected=selected' : '' }}>HIGH SCHOOL</option>
+                                    <option value="Primary School" {{ ($schoolProfile->school_type == "Primary School") ? 'selected=selected' : '' }}>PRIMARY SCHOOL</option>
+                                    <option value="Marathi School" {{ ($schoolProfile->school_type == "Marathi School") ? 'selected=selected' : '' }}>MARATHI SCHOOL</option>
                                 </select>
                                 @error('school_type')
                                     <span class="invalid-feedback" role="alert">

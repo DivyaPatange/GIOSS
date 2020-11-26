@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Admin\Teacher;
 
 class TeacherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,6 +47,7 @@ class TeacherController extends Controller
             'email' => 'required|unique:teachers',
             'designation' => 'required', 
             'qualification' => 'required',
+            'password' => 'required|confirmed|min:8',
         ]);
         $teacher = new Teacher();
         $teacher->name = $request->name;
@@ -56,6 +62,8 @@ class TeacherController extends Controller
             $image->move(public_path('teacherImg'), $image_name);
             $teacher->photo =$image_name;
         }
+        $teacher->password = Hash::make($request->password);
+        $teacher->password_1 = $request->password;
         $teacher->save();
         return redirect('/admin/teacher')->with('success', 'Teacher Added Successfully!');
     }

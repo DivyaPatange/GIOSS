@@ -89,13 +89,13 @@
                     </div>
                     @if($teacher->photo)
                     <input type="hidden" class="form-control-file" name="hidden_image" value="{{ $teacher->photo}}">
-                    @endif
                     <div class="col-md-4">
                         <label for=""></label>
                         <div class="form-group">
                             <a href="{{  URL::asset('teacherImg/' . $teacher->photo) }}" target="_blank">Click to View</a>
                         </div>
                     </div>
+                    @endif
                 </div>
             
             </div>

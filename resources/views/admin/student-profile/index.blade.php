@@ -56,21 +56,25 @@
                         <tbody>
                             @foreach($studentProfile as $key=>$s)
                             <?php 
-                            $name=DB::table('school_profile')->where('id',$user->school_name)->first();
-                            ?>
-                            <?php 
-                            $class=DB::table('standerd')->where('id',$user->class_name)->first();
-                            ?>
-                            <?php 
-                            $year=DB::table('acadamic_year')->where('id',$user->acadamic_year)->first();
+                            $schoolName=DB::table('school_profiles')->where('id',$s->school_name)->first();
+                            $academicYear=DB::table('academic_years')->where('id',$s->academic_session)->first();
+                            $class=DB::table('classes')->where('id',$s->class)->first();
+                            if(!empty($class))
+                            {
+                                $standard = DB::table('standards')->where('id', $class->standard)->first();
+                                $section = DB::table('sections')->where('id', $class->section)->first();
+                            }
                             ?> 
                             <tr>
                                 <td>{{ ++$key }}</td>
-                                <td>{{ $user->first_name }}</td>
-                                <td>@if(!empty($name)){{$name->school_name}}@endif</td>
-                                <td class="text-center">{{ $user->admission_number }}</td>
-                                <td>{{ $year->previous_acadamic_year}}-{{$year->acadamic_year}}</td>
-                                <td>@if(!empty($class)){{$class->standard}}@endif</td>
+                                <td>{{ $s->first_name }} {{ $s->middle_name }} {{ $s->last_name }}</td>
+                                <td>@if(isset($schoolName) && !empty($schoolName)){{$schoolName->school_name}}@endif</td>
+                                <td>{{ $s->admission_number }}</td>
+                                <td>@if(isset($academicYear) && !empty($academicYear)) {{ $academicYear->from_academic_year}} - {{$academicYear->to_academic_year}} @endif</td>
+                                <td>@if(isset($class) && !empty($class)) 
+                                @if(isset($standard) && !empty($standard)) {{$standard->standard}} @endif
+                                @if(isset($section) && !empty($section)) {{$section->section}} @endif
+                                @endif</td>
                                 <td><a href="{{ route('admin.student-profile.edit', $s->id) }}"><button class="btn btn-icon btn-round btn-secondary">
 										<i class="fa fa-pencil"></i>
 									</button></a>

@@ -19,6 +19,7 @@ class AdminsTableSeeder extends Seeder
         $admin = Admin::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
+            'mobile_no' => '1234567890',
             'password' => Hash::make('admin@admin.com'),
         ]);
     }
