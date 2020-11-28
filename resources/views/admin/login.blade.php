@@ -38,7 +38,7 @@
 </div>
 @endif
             <div class="text-center">
-                <img src="https://erp.gioss.org/assets/img/logo.png" style="width:40%">
+                <img src="{{ asset('logo.png') }}" style="width:40%">
             </div>
 			<h3 class="text-center">Sign In</h3>
 			<div class="login-form">

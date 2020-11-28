@@ -186,4 +186,10 @@ class SchoolProfileController extends Controller
         $schoolProfile->delete();
         return redirect('/admin/school-profile')->with('success', 'School Profile Deleted Successfully!');
     }
+
+    public function getList()
+    {
+        $schoolProfile = SchoolProfile::all();
+        return response()->json($schoolProfile,202);
+    }
 }
