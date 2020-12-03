@@ -11,6 +11,10 @@ use App\Http\Controllers\Admin\SchoolProfileController;
 use App\Http\Controllers\Admin\StudentProfileController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\UserAccountController;
+use App\Http\Controllers\Admin\NewAllotmentController;
+use App\Http\Controllers\Admin\FeeHeadController;
+use App\Http\Controllers\Admin\FeeController;
+use App\Http\Controllers\Admin\PayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +52,11 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('/userAccount', UserAccountController::class);
     Route::delete('/adminAccount/delete/{id}', [UserAccountController::class, 'adminAccountDelete'])->name('adminAccount.destroy');
     Route::delete('/accAccount/delete/{id}', [UserAccountController::class, 'accAccountDelete'])->name('accAccount.destroy');
-
+    Route::resource('/allotment', NewAllotmentController::class);
+    Route::get('/searchStudent', [NewAllotmentController::class, 'searchStudent'])->name('searchStudent');
+    Route::resource('/fee-head', FeeHeadController::class);
+    Route::resource('/fee', FeeController::class);
+    Route::get('/pay', [PayController::class, 'index'])->name('pay.index');
+    Route::get('/pay/{id}', [PayController::class, 'view'])->name('pay.view');
 });
 

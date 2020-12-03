@@ -83,6 +83,11 @@
                                     <span class="sub-item">Admission List</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.allotment.create') }}">
+                                    <span class="sub-item">New Allotment</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -133,36 +138,41 @@
                         </ul>
                     </div>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a data-toggle="collapse" href="#charts">
                         <i class="far fa-chart-bar"></i>
-                        <p>Charts</p>
+                        <p>Fees</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="charts/charts.html">
-                                    <span class="sub-item">Chart Js</span>
+                                <a href="{{ route('admin.fee-head.index') }}">
+                                    <span class="sub-item">Fee Head</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="charts/sparkline.html">
-                                    <span class="sub-item">Sparkline</span>
+                                <a href="{{ route('admin.fee.index') }}">
+                                    <span class="sub-item">Add Fee</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.pay.index') }}">
+                                    <span class="sub-item">Pay Fee</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
                 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="widgets.html">
                         <i class="fas fa-desktop"></i>
                         <p>Widgets</p>
                         <span class="badge badge-count badge-success">4</span>
                     </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a data-toggle="collapse" href="#custompages">
                         <i class="fas fa-paint-roller"></i>
                         <p>Custom Pages</p>
@@ -192,8 +202,8 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a data-toggle="collapse" href="#submenu">
                         <i class="fas fa-bars"></i>
                         <p>Menu Levels</p>

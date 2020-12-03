@@ -50,6 +50,7 @@ class AdminLoginController extends Controller
         'email'   => 'required|email',
         'password' => 'required|min:6'
       ]);
+      
       $loginResponse = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]);
       // return $response;
       // Attempt to log the user in

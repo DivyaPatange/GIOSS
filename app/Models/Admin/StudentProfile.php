@@ -16,5 +16,5 @@ class StudentProfile extends Model
     'mother_tongue', 'gender', 'photo', 'date_of_birth', 'father_name', 'father_contact_no', 'mother_name', 'mother_contact_no',
     'residential_address', 'guardian_name', 'guardian_address', 'previous_school', 'previous_school_address', 'previous_class', 
     'medium_of_instruction', 'extra_curricular_activity', 'health_problem', 'school_recognised', 'date_of_leaving', 'transfer_certificate',
-    'bonafide_certificate', 'admission_fees_discount', 'term_fees_discount'];
+    'bonafide_certificate', 'admission_fees_discount', 'term_fees_discount', 'status'];
 }

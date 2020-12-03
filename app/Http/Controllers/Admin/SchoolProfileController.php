@@ -85,6 +85,7 @@ class SchoolProfileController extends Controller
         $schoolProfile->medium = $request->medium;
         $schoolProfile->board = $request->board;
         $schoolProfile->save();
+
         return redirect('/admin/school-profile')->with('success', 'School Profile Added Successfully');
     }
 

@@ -10,6 +10,8 @@ use App\Models\Admin\StudentProfile;
 use App\Models\Admin\Classes;
 use App\Models\Admin\Teacher;
 use App\Models\Admin\Sibling;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Parents;
 use DB;
 
 class StudentProfileController extends Controller
@@ -63,6 +65,7 @@ class StudentProfileController extends Controller
             'middle_name' => 'required',
             'last_name' => 'required',
             'transfer_certificate' => 'required',
+            'date_of_birth' => 'required',
         ]);
         $studentProfile = new StudentProfile();
         $studentProfile->form_no = $request->form_no;
@@ -112,6 +115,14 @@ class StudentProfileController extends Controller
         $studentProfile->admission_fees_discount = $request->admission_fees_discount;
         $studentProfile->term_fees_discount = $request->term_fees_discount;
         $studentProfile->save();
+
+        $id = mt_rand(10000,99999);
+        $parentCredential = new Parents();
+        $parentCredential->username = "GIOSS".$id;
+        $parentCredential->password = Hash::make($request->date_of_birth);
+        $parentCredential->password_1 = $request->date_of_birth;
+        $parentCredential->admission_id = $studentProfile->id;
+        $parentCredential->save();
         return redirect('/admin/student-profile')->with('success', 'Student Added Successfully!'); 
     }
 
