@@ -58,5 +58,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::resource('/fee', FeeController::class);
     Route::get('/pay', [PayController::class, 'index'])->name('pay.index');
     Route::get('/pay/{id}', [PayController::class, 'view'])->name('pay.view');
+    Route::post('/pay/store', [PayController::class, 'store'])->name('pay.store');
 });
 

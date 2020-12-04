@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLoginController;
-use App\Http\Controllers\Admin\SchoolProfileController;
+use App\Http\Controllers\APIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/admin/login', [AdminLoginController::class, 'processLoginApi']);
 Route::post('/admin/logout', [AdminLoginController::class, 'processLogoutApi']);
-Route::get('/admin/school-list', [SchoolProfileController::class, 'getList']);
+Route::get('/admin/school-list', [APIController::class, 'getList']);

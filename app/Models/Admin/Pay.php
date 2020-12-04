@@ -10,5 +10,5 @@ class Pay extends Model
     use HasFactory;
 
     protected $table = "pays";
-    protected $fillable = ['admission_id', 'fee_head_id', 'pay_amount', 'balance'];
+    protected $fillable = ['admission_id', 'fee_id', 'pay_amount', 'balance', 'payment_date'];
 }

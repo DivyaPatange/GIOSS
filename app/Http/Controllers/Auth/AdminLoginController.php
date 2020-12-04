@@ -52,7 +52,6 @@ class AdminLoginController extends Controller
       ]);
       
       $loginResponse = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]);
-      // return $response;
       // Attempt to log the user in
       if($loginResponse == 1) {
         $response = DB::table('admins')->where('email', $request->email)->first();
@@ -67,6 +66,10 @@ class AdminLoginController extends Controller
         // return $adminLoginRecord;        
         return array("status" => "success","adminData" =>['email' => $request->email,'api_token' =>  $record->api_token]);
       }
+      elseif(empty($loginResponse) && ($loginResponse == 0))
+      {
+        return array("status" => "error","message" => "Incorrect Credentials");
+      }
       else{
         return array("status" => "error","message" => "Your Account is Not Activated. Please Contact Administrator");
       } 
@@ -77,9 +80,19 @@ class AdminLoginController extends Controller
         $data = $request->all();
         $email = $data['email'];
         $token = $data['api_token'];
-        DB::table('admins_login_api')->where('email', $email)->where('status', 1)
-        ->where('api_token', $token)->update(['status' => 0, 'logout_time' => date('Y-m-d H:i:s')]);
+        $user = DB::table('admins_login_api')->where('email', $email)->where('api_token', $token)->where('status', 1)->first();
+        if(!empty($user)){
+          DB::table('admins_login_api')->where('email', $email)->where('api_token', $token)->where('status', 1)->update(['status' => 0, 'logout_time' => date('Y-m-d H:i:s')]);
+          return ["status" => "success","message" => "Admin Logged Out Successfully"];
+        }
+        elseif(empty($user))
+        {
+          return ["status" => "error","message" => "Incorrect Values"];
+        }
+        else{
+          return ["status" => "error","message" => "Admin is already log out"];
+        }
         
-        return ["status" => "success","message" => "Admin Logged Out Successfully"];
+        
     }
 }

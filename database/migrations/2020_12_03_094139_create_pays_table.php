@@ -17,9 +17,10 @@ class CreatePaysTable extends Migration
             $table->id();
             $table->unsignedInteger('admission_id');
             $table->foreign('admission_id')->references('id')->on('student_profiles');
-            $table->unsignedInteger('fee_head_id');
-            $table->foreign('fee_head_id')->references('id')->on('fees_heads');
+            $table->unsignedInteger('fee_id');
+            $table->foreign('fee_id')->references('id')->on('fees');
             $table->string('pay_amount');
+            $table->date('payment_date');
             $table->string('balance');
             $table->timestamps();
         });
