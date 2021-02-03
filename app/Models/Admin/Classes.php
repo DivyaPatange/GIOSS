@@ -11,5 +11,5 @@ class Classes extends Model
 
     protected $table = "classes";
 
-    protected $fillable = ['standard', 'section'];
+    protected $fillable = ['standard', 'section', 'class_incharge'];
 }

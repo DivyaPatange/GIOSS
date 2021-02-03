@@ -32,7 +32,7 @@
             @method('PUT')
             <div class="card-body">           
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="from">Standard</label>
                             <select class="form-control @error('standard') is-invalid @enderror" id="from" name="standard">
@@ -48,7 +48,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="to">Section</label>
                             <select class="form-control @error('section') is-invalid @enderror" id="to" name="section">
@@ -58,6 +58,22 @@
                                 @endforeach
                             </select>
                             @error('section')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="class_incharge">Class Incharge</label>
+                            <select class="form-control @error('class_incharge') is-invalid @enderror" id="class_incharge" name="class_incharge">
+                                <option value="">-Select Class Incharge-</option>
+                                @foreach($teachers as $t)
+                                <option value="{{ $t->id }}" {{ ($class->class_incharge == $t->id) ? 'selected=selected' : '' }}>{{ $t->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('class_incharge')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

@@ -31,7 +31,7 @@
             @csrf
             <div class="card-body">           
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="from">Standard</label>
                             <select class="form-control @error('standard') is-invalid @enderror" id="from" name="standard">
@@ -47,7 +47,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="to">Section</label>
                             <select class="form-control @error('section') is-invalid @enderror" id="to" name="section">
@@ -57,6 +57,22 @@
                                 @endforeach
                             </select>
                             @error('section')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="class_incharge">Class Incharge</label>
+                            <select class="form-control @error('class_incharge') is-invalid @enderror" id="class_incharge" name="class_incharge">
+                                <option value="">-Select Class Incharge-</option>
+                                @foreach($teachers as $t)
+                                <option value="{{ $t->id }}">{{ $t->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('class_incharge')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -84,6 +100,7 @@
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Class </th>
+                                <th>Class Incharge</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -91,6 +108,7 @@
                             <tr>
                                 <th>Sr. No.</th>
                                 <th>Class</th>
+                                <th>Class Incharge</th>
                                 <th>Action</th>
                             </tr>
                         </tfoot>
@@ -99,11 +117,13 @@
                             <?php
                                 $standard = DB::table('standards')->where('id', $c->standard)->first();
                                 $section = DB::table('sections')->where('id', $c->section)->first();
+                                $classIncharge = DB::table('teachers')->where('id', $c->class_incharge)->first();
                                 // dd($section);
                             ?>
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>@if(isset($standard) && !empty($standard)){{ $standard->standard }} @endif @if(isset($section) && !empty($section)){{ $section->section }} @endif</td>
+                                <td>@if(isset($classIncharge) && !empty($classIncharge)) {{ $classIncharge->name }} @endif</td>
                                 <td><a href="{{ route('admin.class.edit', $c->id) }}"><button class="btn btn-icon btn-round btn-secondary">
 										<i class="fa fa-pencil"></i>
 									</button></a>

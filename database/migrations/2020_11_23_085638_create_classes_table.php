@@ -19,6 +19,8 @@ class CreateClassesTable extends Migration
             $table->foreign('standard')->references('id')->on('standards');
             $table->unsignedInteger('section');
             $table->foreign('section')->references('id')->on('sections');
+            $table->unsignedInteger('class_incharge');
+            $table->foreign('class_incharge')->references('id')->on('teachers');
             $table->timestamps();
         });
     }
